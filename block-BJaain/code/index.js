@@ -1,15 +1,16 @@
-console.log(this.document === document); // Output
+console.log(this.document === document); // Output  //true
 
 // ------------
 
-console.log(this === window); //Output
+console.log(this === window); //Output //true
 
 // ------------
 
 var myFunction = function () {
   console.log(this);
 };
-myFunction(); // Output
+myFunction(); // Output //Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
+
 
 // ------------
 
@@ -17,7 +18,7 @@ function f1() {
   'use strict';
   return this;
 }
-console.log(f1() === window); //Output
+console.log(f1() === window); //Output //fasle
 
 // ------------
 
@@ -26,7 +27,8 @@ function foo() {
   console.log(this === window);
 }
 
-foo(); //Output ??
+foo(); //Output ?? // Simple function call
+                  //true
 
 // ------------
 
@@ -34,7 +36,9 @@ foo(); //Output ??
 (function () {
   console.log('Anonymous function invocation');
   console.log(this === window);
-})(); //Output
+})(); //Output // Anonymous function invocation
+              // true
+
 
 // ------------
 
@@ -42,7 +46,7 @@ var myObject = {};
 myObject.someMethod = function () {
   console.log(this);
 };
-myObject.someMethod(); //Value Of This
+myObject.someMethod(); //Value Of This //{someMethod: ƒ}
 
 // ------------
 
@@ -56,9 +60,9 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // Output //// Name: John Reed
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Output // Name: Paul Adams
 
 // ------------
 
@@ -76,10 +80,11 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // Output // // Simple function call
+                        //false
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); // Output ??  // true
+user.foo1(); // Output ?? //fasle
 
 // ------------
 
@@ -91,13 +96,13 @@ var obj = {
   },
 };
 
-obj.getX(); // Output ??
+obj.getX(); // Output ?? //81
 
 var retrieveX = obj.getX;
-retrieveX(); //Output ??
+retrieveX(); //Output ?? //9
 
 var boundGetX = retrieveX.bind(obj);
-boundGetX(); // Output ??
+boundGetX(); // Output ?? //81
 
 // ------------
 
@@ -111,11 +116,11 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // Output //Name: John Read
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Output //Name: Paul Adams
 
-person.displayName.call(person2); // Output ??
+person.displayName.call(person2); // Output ?? // Name: Paul Adams
 
 // ------------
 
@@ -158,10 +163,10 @@ let person = {
   },
 };
 
-person.greet(); // output
+person.greet(); // output // hello, Jay
 
 let greet = person.greet;
-greet(); // output
+greet(); // output // hello
 
 // -------------
 
@@ -178,14 +183,14 @@ let person = {
     return this.name;
   },
 };
-console.log(person.details.print()); // output?
-console.log(person.print()); // output?
+console.log(person.details.print()); // output? // Jay Details
+console.log(person.print()); // output? // Jay Person
 
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // output?
-console.log(name2.print()); // output?
+console.log(name1()); // output?   `will output undefined`.
+console.log(name2.print()); // output? `will throw a TypeError`.
 
 // --------
 

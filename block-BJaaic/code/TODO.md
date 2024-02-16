@@ -16,7 +16,7 @@ Methods
 - `changeLocation(newLocation)` - accepts location and updates the location of the animal
 
 - `summary()` - returns `I live in ${location} and I have ${numberOfLegs}`
-
+ 
 #### Dog
 
 It will have all the properties and methods of the Animal. These are the extra properties and methods these dogs will have.
@@ -33,6 +33,9 @@ Methods:
 - `changeColor(newColor)` - accepts the new color and updates the color of the dog
 - `summary()` - returns `I am ${name} and I am of ${color} color. I can also bark`
 
+let animalMethod = {
+    
+}
 #### Cat
 
 It will have all the properties and methods of the Animal. These are the extra properties and methods these dogs will have.
@@ -50,4 +53,4 @@ Methods:
 
 - `changeColorOfEyes(newColor)` - accepts the new color and updates the color of the dog
 
-- `summary()` - returns `I am ${name} and the color of my eyes are ${colorOfEyes}. I can also do meow meow`
+- `summary()` - returns `I am ${name} and the color of my eyes are ${colorOfEyes}. I can also do meow meow

@@ -6,6 +6,10 @@
 
 function makePerson(name, age) {
   // add code here
+  let obj ={};
+  obj.name = name;
+  obj.age = age;
+  return obj ;
 }
 
 var vicky = makePerson('Vicky', 24);
@@ -22,6 +26,9 @@ var vicky = makePerson('Vicky', 24);
 
 var personStore = {
   // add code here
+  great : function (){
+    console.log("hello");
+  },
 };
 
 // /********* Uncomment this line to test your work! *********/
@@ -31,6 +38,10 @@ var personStore = {
 
 function personFromPersonStore(name, age) {
   // add code here
+  let person = Object.create(personStore);
+  person.name = name;
+  person.age = age;
+  return person
 }
 
 var sandra = personFromPersonStore('Sandra', 26);
@@ -43,7 +54,9 @@ var sandra = personFromPersonStore('Sandra', 26);
 /*** CHALLENGE 3 of 3 ***/
 
 // add code here
-
+personStore.introduce = function(){
+  console.log(`Hi my is ${this.name}`)
+}
 // sandra.introduce(); // -> Logs 'Hi, my name is Sandra'
 
 /****************************************************************
@@ -54,6 +67,9 @@ var sandra = personFromPersonStore('Sandra', 26);
 
 function PersonConstructor() {
   // add code here
+  this.great = function(){
+    console.log("hello");
+  }
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -64,6 +80,12 @@ var simon = new PersonConstructor();
 
 function personFromConstructor(name, age) {
   // add code here
+  function person(name, age){
+  this.name = name;
+  this.age = age;
+  }
+  var person = new person(name, age);
+  return person;
 }
 
 var mike = personFromConstructor('Mike', 30);
@@ -75,6 +97,17 @@ var mike = personFromConstructor('Mike', 30);
 
 /*** CHALLENGE 3 of 3 ***/
 // add code here
+function personFromConstructor(name, age) {
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.introduce = function () {
+      console.log("Hi, my name is " + this.name);
+    };
+  }
+  var person = new Person(name, age);
+  return person;
+}
 
 // mike.introduce(); // -> Logs 'Hi, my name is Mike'
 
@@ -85,11 +118,14 @@ var mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 1 of 3 ***/
 
 class PersonClass {
-  constructor() {
+  constructor(name) {
     // add code here
+    this.name = name
   }
-
-  // add code here
+// add code her
+great(){
+  console.log("hello");
+  }
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -123,10 +159,10 @@ function userFactory(name, score) {
   return user;
 }
 
-var adminFunctionStore /* Put code here */;
+var adminFunctionStore = Object.create(userFunctionStore);;
 
 function adminFactory(name, score) {
-  // Put code here
+  let obj = Object.create(userFactory);
 }
 
 /* Put code here for a method called sharePublicMessage*/
